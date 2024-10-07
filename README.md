@@ -3,8 +3,8 @@
 ## Description
 The LocationMap project is a hypothetical spatial data management system designed for indoor environments. It manages and organizes data about objects located within specific spaces, with objects and Points of Interest (POIs) linked to precise locations called "fingerprints." The system also tracks details about each object and supports building management. User queries and spatial analyses results are displayed through a simple web application.
 
-This project was part of the EPL342-Databases course at the University of Cyprus.
-Authors: Eliada Polydorou, Andreas Anastasiou, Theodoros Siokouros.
+This project was part of the **EPL342-Databases** course at the University of Cyprus.
+**Authors**: Eliada Polydorou, Andreas Anastasiou, Theodoros Siokouros.
 
 ---
 
