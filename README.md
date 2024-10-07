@@ -1,7 +1,7 @@
 # LocationMap System
 
 ## Description
-The LocationMap project is a hypothetical spatial data management system designed for indoor environments, meaning it manages and organizes data about objects located within a specific indoor space. These objects, identified as Points of Interest (POIs), are associated with specific locations (or "fingerprints") within the space. Each fingerprint represents a point where objects are detected and recorded. The system stores this data in a relational database and allows users to query and analyze it, facilitating spatial calculations such as finding objects, buildings, or floors based on certain criteria.
+The LocationMap project is a hypothetical spatial data management system designed for indoor environments. It manages and organizes data about objects located within specific spaces, with objects and Points of Interest (POIs) linked to precise locations called "fingerprints." The system also tracks details about each object and supports building management. User queries and spatial analyses results are displayed through a simple web application.
 
 ---
 
