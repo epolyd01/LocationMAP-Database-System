@@ -1,0 +1,198 @@
+
+/****** Object:  Table [dbo].[USER]    Script Date: 11/11/2022 ******/
+/*INSERT [dbo].[USER] ([ID],[Name], [Date_Of_Birth],[Sex], [Username],[Password],[Type],[Seq_Num]*/
+Declare @id int
+Set @id = 1
+SET IDENTITY_INSERT [dbo].[USER] ON
+Declare @random int
+declare @date date
+    set @date = '1950-01-01'
+
+While @id <= 40 AND @date < '2025-01-01'
+Begin 
+   Insert Into [dbo].[USER](ID,[Name],Date_Of_Birth,Sex,Username,[Password],[Type],Seq_Num) values ((@id),'Name - ' + CAST(@id as nvarchar(10)),@date,
+              'M' , 'username' + CAST(@id as nvarchar(10)) , ' code'+ CAST(@id as nvarchar(10)),CASE WHEN  ROUND(RAND()*2,0)+1=1 THEN 3 WHEN  ROUND(RAND()*2,0)+1=2 THEN 2 ELSE 1 END, @id)
+   Print @id
+   Print @random
+   Set @id = @id + 1
+	set @date = dateadd(day,1, @date)
+
+End
+SET IDENTITY_INSERT [dbo].[USER] OFF
+
+--SELECT * FROM [dbo].[USER]
+--DELETE FROM [dbo].[USER] WHERE Gender='M'
+
+
+
+
+
+
+/****** Object:  Table [dbo].[TYPE]    Script Date: 10/26/2009 11:47:18 ******/
+/*[dbo].[OBJECTTYPE]([Title] ,[Model_Of_Origin]*/
+
+Declare @id2 int
+Set @id2 = 1
+
+
+While @id2 <= 40
+Begin 
+   Insert Into [dbo].[TYPE] values ('Title - ' + CAST(@id2 as nvarchar(10)), 'Model-' + CAST(@id2 as nvarchar(10)) )
+   Print @id2
+    Set @id2 = @id2 + 1
+End
+
+SELECT * FROM [dbo].[TYPE]
+--DELETE FROM [dbo].[OBJECTTYPE]
+
+
+/****** Object:  Table [dbo].[OBJECT]    Script Date: 11/11/2022 ******/
+/*INSERT [dbo].[OBJECT]([ObjectID],[Width],[Height],[Title],[FingerprintID])*/
+
+Declare @id5 int
+Set @id5 = 1
+SET IDENTITY_INSERT [dbo].[OBJECT] ON
+While @id5 <= 40 
+Begin 
+   Insert Into [dbo].[OBJECT]([ObjectID],[Width],[Height],[Title],[FingerprintID]) values (@id5,0+CAST(@id5 as nvarchar(10)),
+              1+CAST(@id5 as nvarchar(10)), 'Title - ' + CAST(@id5 as nvarchar(10)),@id5)
+   Print @id5
+   Set @id5 = @id5 + 1
+
+End
+SET IDENTITY_INSERT [dbo].[OBJECT] OFF
+SELECT * FROM [dbo].[OBJECT]
+--DELETE FROM [dbo].[OBJECT]
+/****** Object:  Table [dbo].[CAMPUS]    Script Date: 11/11/2022 ******/
+/*INSERT [dbo].[CAMPUS]([Name] varchar(50)  NOT NULL  ,[Description] varchar(200) NOT NULL,[Date_Of_Registration] smalldatetime NOT NULL,[Web_Address] varchar(100) NOT NULL)*/
+
+Declare @id4 int
+Set @id4 = 1
+
+declare @date2 date
+    set @date2 = '1950-01-01'
+
+While @id4 <= 40 AND @date2 < '2025-01-01'
+Begin 
+   Insert Into [dbo].[CAMPUS]([Name],[Description],Date_Of_Registration,Web_Address) values ('Campus - ' + CAST(@id4 as nvarchar(10)),'Description - '+CAST(@id4 as nvarchar(10)),@date2,
+              'Website' + CAST(@id4 as nvarchar(10)))
+   Print @id4
+   Set @id4 = @id4 + 1
+	set @date2 = dateadd(day,1, @date2)
+
+End
+
+
+SELECT * FROM [dbo].[CAMPUS]
+--DELETE FROM [dbo].[CAMPUS]
+
+
+/****** Object:  Table [dbo].[BUILDING]    Script Date: 10/26/2009 11:47:18 ******/
+/*[dbo].[Building] ([BCode] ,[Name] ,[Small_Description] ,[Address] ,[X] ,[Y] ,[Owner] , [Date_Of_Register] ,[Number_Of_Floors]) */
+
+Declare @id3 int
+Set @id3 = 1
+
+declare @regdate date
+    set @regdate = '1950-01-01'
+
+While @id3 <= 40 AND @regdate < '2025-01-01'
+Begin 
+   Insert Into [dbo].[Building](BCode,[Name],[Small_Description],[Address],[X],[Y],[Owner],[Date_Of_Register],[Number_Of_Floors]) 
+   values ( 'Code - ' + CAST(@id3 as nvarchar(10)), 'Campus - ' + CAST(@id3 as nvarchar(10)),'Description - ' + CAST(@id3 as nvarchar(10)), 'Address - ' + CAST(@id3 as nvarchar(10)),@id3,@id3,'Owner- ' + CAST(@id3 as nvarchar(10)),@regdate, @id3)
+   Print @id3
+   Set @id3 = @id3 + 1
+	set @regdate = dateadd(day,1, @regdate)
+
+End
+
+
+SELECT * FROM [dbo].[Building]
+--DELETE FROM [dbo].[BUILDING]
+
+/****** Object:  Table [dbo].[FLOOR]    Script Date: 11/11/2022 ******/
+/*INSERT [dbo].[FLOOR]([Number] ,[Small_Description] varchar(100) NOT NULL,[Topology_Map] VARBINARY(MAX) NOT NULL ,[BCode] varchar(10) NOT NULL,[FloorID])*/
+
+Declare @id6 int
+Set @id6 = 1
+
+SET IDENTITY_INSERT [dbo].[Floor] ON
+
+While @id6 <= 40 
+Begin 
+   Insert Into [dbo].[FLOOR](Number,Small_Description,Topology_Map,BCode,FloorID) values (@id6,'Description - '+ CAST(@id6 as nvarchar(10)),CAST(@id6 as varbinary(10)),'Code - ' + CAST(@id6 as nvarchar(10)),@id6)
+   Print @id6
+   Set @id6 = @id6 + 1
+
+End
+SET IDENTITY_INSERT [dbo].[Floor] OFF
+
+
+SELECT * FROM [dbo].[FLOOR]
+--DELETE  FROM [dbo].[FLOOR]
+--DROP TABLE [dbo].[FLOOR]
+
+
+/****** Object:  Table [dbo].[FINGERPRINT]    Script Date: 11/11/2022 ******/
+/*INSERT[dbo].[FINGERPRINT]([FingerprintID] int NOT NULL IDENTITY(1,1),[Seq_Num] ,[Floor] ,[X] ,[Y]  [Date_Of_Register]*/
+
+Declare @id8 int
+Set @id8 = 1
+
+declare @date4 date
+    set @date4 = '1950-01-01'
+	SET IDENTITY_INSERT [dbo].[FINGERPRINT] ON
+While @id8 <= 40 AND @date4 < '2025-01-01'
+Begin 
+   Insert Into [dbo].[FINGERPRINT]([FingerprintID],[Seq_Num] ,[Floor],[X] ,[Y],[Date_Of_Register]) values (@id8,@id8, @id8,@id8, @id8 ,@date4)
+   Print @id8
+   Set @id8 = @id8 + 1
+	set @date4 = dateadd(day,1, @date4)
+
+End
+SET IDENTITY_INSERT [dbo].[FINGERPRINT] OFF
+
+SELECT * FROM [dbo].[FINGERPRINT]
+--DELETE FROM [dbo].[FINGERPRINT]
+
+/****** Object:  Table [dbo].[POI]    Script Date: 11/11/2022 ******/
+/*INSERT[dbo].[POI]([Number] int NOT NULL IDENTITY(1,1),[Name] varchar(20) NOT NULL,[FloorNumber] int NOT NULL,[FloorCode] varchar(10) NOT NULL,[Width] float NOT NULL,[Length] float NOT NULL, [Type] varchar(50) NOT NULL,[Description] varchar(200) NOT NULL,[Owner] varchar(20))*/
+
+
+Declare @id9 int
+Set @id9 = 1
+/**SET IDENTITY_INSERT [dbo].[POIs] ON**/
+
+While @id9 <= 40 
+Begin 
+   Insert Into [dbo].[POIs]([POIsID],[Name],[FloorID],[X],[Y], [Type],[Description],[Possible_Owner]) 
+   values (@id9,'Name - '+CAST(@id9 as nvarchar(10)),@id9,0+CAST(@id9 as nvarchar(10)),1+CAST(@id9 as nvarchar(10)),'Type - '+CAST(@id9 as nvarchar(10)),'Description '+CAST(@id9 as nvarchar(10)),'Owner- ' + CAST(@id9 as nvarchar(10)))
+   Print @id9
+   Set @id9 = @id9 + 1
+
+End
+/**SET IDENTITY_INSERT [dbo].[POI] OFF**/
+
+SELECT * FROM [dbo].[POIs]
+--DELETE FROM [dbo].[POI]
+
+/****** Object:  Table [dbo].[FINGERPRINTOBJECT]    Script Date: 11/11/2022 ******/
+/*INSERT[dbo].[POI]([FingerprintNumber] int NOT NULL,[ObjectNumber] int NOT NULL)*/
+
+/**
+Declare @id10 int
+Set @id10 = 1
+
+
+While @id10 <= 40 
+Begin 
+   Insert Into [dbo].[FINGERPRINTOBJECT]([FingerprintNumber],[ObjectNumber])values(@id10,@id10)
+   
+   Print @id10
+   Set @id10 = @id10 + 1
+
+End
+Insert Into [dbo].[FINGERPRINTOBJECT]([FingerprintNumber],[ObjectNumber])values(1,42)
+SELECT * FROM [dbo].[FINGERPRINTOBJECT]
+--DELETE FROM [dbo].[FINGERPRINTOBJECT]
+**/

@@ -1,0 +1,8 @@
+DROP TABLE Building
+DROP TABLE Campus
+DROP TABLE Fingerprint
+DROP TABLE [Floor]
+DROP TABLE [Object]
+DROP TABLE [POIs]
+DROP TABLE [Type]
+DROP TABLE [User]
